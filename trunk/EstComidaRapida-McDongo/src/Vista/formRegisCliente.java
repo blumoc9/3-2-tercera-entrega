@@ -1,6 +1,7 @@
 package Vista;
 import java.awt.BorderLayout;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -30,7 +31,6 @@ public class formRegisCliente extends javax.swing.JFrame {
 	private JButton btCancelar;
 	private JButton btRegistrar;
 	private JTextField txtTelefono;
-	private JTextField txtDireccion2;
 	private JTextField txtDireccion;
 	private JTextField txtCedula;
 	private JLabel lblTelefono;
@@ -64,35 +64,41 @@ public class formRegisCliente extends javax.swing.JFrame {
 				pnRegisCliente = new JPanel();
 				getContentPane().add(pnRegisCliente, BorderLayout.CENTER);
 				pnRegisCliente.setLayout(null);
+				pnRegisCliente.setBackground(new java.awt.Color(14,89,14));
 				{
 					pnDatos = new JPanel();
 					pnRegisCliente.add(pnDatos);
 					pnDatos.setBounds(12, 12, 366, 181);
 					pnDatos.setLayout(null);
 					pnDatos.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0,0,0)));
+					pnDatos.setBackground(new java.awt.Color(255,255,255));
 					{
 						lblCedula = new JLabel();
 						pnDatos.add(lblCedula);
 						lblCedula.setText("Cedula:");
-						lblCedula.setBounds(19, 21, 47, 14);
+						lblCedula.setBounds(19, 21, 61, 14);
+						lblCedula.setFont(new java.awt.Font("Purisa",1,11));
 					}
 					{
 						lblNombre = new JLabel();
 						pnDatos.add(lblNombre);
 						lblNombre.setText("Nombre:");
-						lblNombre.setBounds(19, 52, 53, 14);
+						lblNombre.setBounds(19, 52, 72, 14);
+						lblNombre.setFont(new java.awt.Font("Purisa",1,11));
 					}
 					{
 						lblDireccion = new JLabel();
 						pnDatos.add(lblDireccion);
 						lblDireccion.setText("Direccion:");
-						lblDireccion.setBounds(19, 83, 62, 14);
+						lblDireccion.setBounds(19, 83, 72, 14);
+						lblDireccion.setFont(new java.awt.Font("Purisa",1,11));
 					}
 					{
 						lblTelefono = new JLabel();
 						pnDatos.add(lblTelefono);
 						lblTelefono.setText("Telefono:");
-						lblTelefono.setBounds(23, 145, 58, 14);
+						lblTelefono.setBounds(23, 145, 76, 14);
+						lblTelefono.setFont(new java.awt.Font("Purisa",1,11));
 					}
 					{
 						txtCedula = new JTextField();
@@ -107,12 +113,7 @@ public class formRegisCliente extends javax.swing.JFrame {
 					{
 						txtDireccion = new JTextField();
 						pnDatos.add(txtDireccion);
-						txtDireccion.setBounds(99, 80, 239, 21);
-					}
-					{
-						txtDireccion2 = new JTextField();
-						pnDatos.add(txtDireccion2);
-						txtDireccion2.setBounds(99, 107, 239, 21);
+						txtDireccion.setBounds(99, 80, 239, 44);
 					}
 					{
 						txtTelefono = new JTextField();
@@ -124,23 +125,29 @@ public class formRegisCliente extends javax.swing.JFrame {
 					btRegistrar = new JButton();
 					pnRegisCliente.add(btRegistrar);
 					btRegistrar.setText("Registrar");
-					btRegistrar.setBounds(93, 212, 71, 21);
+					btRegistrar.setBounds(28, 212, 127, 21);
+					btRegistrar.setFont(new java.awt.Font("Purisa",1,11));
+					btRegistrar.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/add.png")));
 				}
 				{
 					btCancelar = new JButton();
 					pnRegisCliente.add(btCancelar);
 					btCancelar.setText("Cancelar");
-					btCancelar.setBounds(184, 212, 69, 21);
+					btCancelar.setBounds(160, 212, 115, 21);
+					btCancelar.setFont(new java.awt.Font("Purisa",1,11));
+					btCancelar.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/cancel.png")));
 				}
 				{
 					btSalir = new JButton();
 					pnRegisCliente.add(btSalir);
 					btSalir.setText("Salir");
-					btSalir.setBounds(277, 212, 41, 21);
+					btSalir.setBounds(280, 212, 94, 21);
+					btSalir.setFont(new java.awt.Font("Purisa",1,11));
+					btSalir.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/door_out.png")));
 				}
 			}
 			pack();
-			setSize(400, 300);
+			this.setSize(396, 279);
 		} catch (Exception e) {
 		    //add your error handling code here
 			e.printStackTrace();

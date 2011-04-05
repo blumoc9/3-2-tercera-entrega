@@ -1,6 +1,7 @@
 package Vista;
 import java.awt.BorderLayout;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -62,24 +63,28 @@ public class formRegistCategoria extends javax.swing.JFrame {
 				pnRegistrarCateg = new JPanel();
 				getContentPane().add(pnRegistrarCateg, BorderLayout.CENTER);
 				pnRegistrarCateg.setLayout(null);
-				pnRegistrarCateg.setPreferredSize(new java.awt.Dimension(390, 230));
+				pnRegistrarCateg.setPreferredSize(new java.awt.Dimension(374, 201));
+				pnRegistrarCateg.setBackground(new java.awt.Color(14,89,14));
 				{
 					pnDatos = new JPanel();
 					pnRegistrarCateg.add(pnDatos);
 					pnDatos.setBounds(17, 34, 334, 105);
 					pnDatos.setLayout(null);
 					pnDatos.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0,0,0)));
+					pnDatos.setBackground(new java.awt.Color(255,255,255));
 					{
 						lblCodigo = new JLabel();
 						pnDatos.add(lblCodigo);
 						lblCodigo.setText("Codigo:");
 						lblCodigo.setBounds(17, 22, 54, 20);
+						lblCodigo.setFont(new java.awt.Font("Purisa",1,11));
 					}
 					{
 						lblNombre = new JLabel();
 						pnDatos.add(lblNombre);
 						lblNombre.setText("Nombre:");
 						lblNombre.setBounds(17, 54, 53, 14);
+						lblNombre.setFont(new java.awt.Font("Purisa",1,11));
 					}
 					{
 						txtCodigo = new JTextField();
@@ -96,23 +101,29 @@ public class formRegistCategoria extends javax.swing.JFrame {
 					btRegistrar = new JButton();
 					pnRegistrarCateg.add(btRegistrar);
 					btRegistrar.setText("Registrar");
-					btRegistrar.setBounds(47, 168, 71, 21);
+					btRegistrar.setBounds(23, 168, 116, 21);
+					btRegistrar.setFont(new java.awt.Font("Purisa",1,11));
+					btRegistrar.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/add.png")));
 				}
 				{
 					btCancelar = new JButton();
 					pnRegistrarCateg.add(btCancelar);
 					btCancelar.setText("Cancelar");
-					btCancelar.setBounds(129, 168, 69, 21);
+					btCancelar.setBounds(144, 168, 108, 21);
+					btCancelar.setFont(new java.awt.Font("Purisa",1,11));
+					btCancelar.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/cancel.png")));
 				}
 				{
 					btSalir = new JButton();
 					pnRegistrarCateg.add(btSalir);
 					btSalir.setText("Salir");
-					btSalir.setBounds(209, 168, 67, 21);
+					btSalir.setBounds(257, 168, 85, 21);
+					btSalir.setFont(new java.awt.Font("Purisa",1,11));
+					btSalir.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/door_out.png")));
 				}
 			}
 			pack();
-			this.setSize(384, 255);
+			this.setSize(380, 240);
 		} catch (Exception e) {
 		    //add your error handling code here
 			e.printStackTrace();

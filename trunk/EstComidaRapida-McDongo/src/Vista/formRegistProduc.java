@@ -3,6 +3,7 @@ import java.awt.BorderLayout;
 import javax.swing.BorderFactory;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -76,29 +77,34 @@ public class formRegistProduc extends javax.swing.JFrame {
 				getContentPane().add(pnRegisProduc, BorderLayout.CENTER);
 				pnRegisProduc.setLayout(null);
 				pnRegisProduc.setPreferredSize(new java.awt.Dimension(555, 304));
+				pnRegisProduc.setBackground(new java.awt.Color(14,89,14));
 				{
 					pnDatos = new JPanel();
 					pnRegisProduc.add(pnDatos);
 					pnDatos.setBounds(12, 12, 516, 277);
 					pnDatos.setLayout(null);
 					pnDatos.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0,0,0)));
+					pnDatos.setBackground(new java.awt.Color(255,255,255));
 					{
 						lblCodigo = new JLabel();
 						pnDatos.add(lblCodigo);
 						lblCodigo.setText("Codigo:");
 						lblCodigo.setBounds(26, 55, 54, 18);
+						lblCodigo.setFont(new java.awt.Font("Purisa",1,11));
 					}
 					{
 						lblNombre = new JLabel();
 						pnDatos.add(lblNombre);
 						lblNombre.setText("Nombre:");
 						lblNombre.setBounds(26, 91, 53, 14);
+						lblNombre.setFont(new java.awt.Font("Purisa",1,11));
 					}
 					{
 						lblCategoria = new JLabel();
 						pnDatos.add(lblCategoria);
 						lblCategoria.setText("Categoria:");
-						lblCategoria.setBounds(26, 122, 65, 18);
+						lblCategoria.setBounds(13, 122, 78, 18);
+						lblCategoria.setFont(new java.awt.Font("Purisa",1,11));
 					}
 					{
 						txtCodigo = new JTextField();
@@ -129,13 +135,15 @@ public class formRegistProduc extends javax.swing.JFrame {
 							lblIngredientes = new JLabel();
 							pnIngredientes.add(lblIngredientes);
 							lblIngredientes.setText("Ingredientes del Producto");
-							lblIngredientes.setBounds(49, 7, 163, 16);
+							lblIngredientes.setBounds(46, 8, 175, 16);
+							lblIngredientes.setFont(new java.awt.Font("Purisa",1,11));
 						}
 						{
 							lblIngre = new JLabel();
 							pnIngredientes.add(lblIngre);
 							lblIngre.setText("Ingrediente:");
 							lblIngre.setBounds(13, 43, 82, 17);
+							lblIngre.setFont(new java.awt.Font("Purisa",1,11));
 						}
 						{
 							ComboBoxModel cmbIngredienteModel = 
@@ -151,6 +159,7 @@ public class formRegistProduc extends javax.swing.JFrame {
 							pnIngredientes.add(lblCantidad);
 							lblCantidad.setText("Cantidad:");
 							lblCantidad.setBounds(13, 72, 69, 14);
+							lblCantidad.setFont(new java.awt.Font("Purisa",1,11));
 						}
 						{
 							txtCantidad = new JTextField();
@@ -166,12 +175,14 @@ public class formRegistProduc extends javax.swing.JFrame {
 							pnIngredientes.add(tbIngredientes);
 							tbIngredientes.setModel(tbIngredientesModel);
 							tbIngredientes.setBounds(20, 101, 233, 130);
+							tbIngredientes.setFont(new java.awt.Font("Purisa",1,11));
 						}
 						{
 							btAgregar = new JButton();
 							pnIngredientes.add(btAgregar);
-							btAgregar.setText("Agregar");
-							btAgregar.setBounds(171, 69, 64, 21);
+							btAgregar.setBounds(160, 69, 36, 21);
+							btAgregar.setFont(new java.awt.Font("Purisa",1,11));
+							btAgregar.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/accept.png")));
 						}
 					}
 				}
@@ -179,19 +190,25 @@ public class formRegistProduc extends javax.swing.JFrame {
 					btRegistrar = new JButton();
 					pnRegisProduc.add(btRegistrar);
 					btRegistrar.setText("Registrar");
-					btRegistrar.setBounds(122, 301, 71, 21);
+					btRegistrar.setBounds(178, 301, 117, 21);
+					btRegistrar.setFont(new java.awt.Font("Purisa",1,11));
+					btRegistrar.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/add.png")));
 				}
 				{
 					btCancelar = new JButton();
 					pnRegisProduc.add(btCancelar);
 					btCancelar.setText("Cancelar");
-					btCancelar.setBounds(212, 301, 69, 21);
+					btCancelar.setBounds(306, 301, 111, 21);
+					btCancelar.setFont(new java.awt.Font("Purisa",1,11));
+					btCancelar.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/cancel.png")));
 				}
 				{
 					btSalir = new JButton();
 					pnRegisProduc.add(btSalir);
 					btSalir.setText("Salir");
-					btSalir.setBounds(299, 301, 60, 21);
+					btSalir.setBounds(428, 301, 93, 21);
+					btSalir.setFont(new java.awt.Font("Purisa",1,11));
+					btSalir.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/door_out.png")));
 				}
 			}
 			pack();
