@@ -1,5 +1,7 @@
 package Vista;
 import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
@@ -32,13 +34,13 @@ import javax.swing.SwingUtilities;
 */
 public class formRegisOrden extends javax.swing.JFrame {
 	private JPanel pnRegisOrden;
-	private JPanel pnDatos;
-	private JComboBox cmbCliente;
-	private JButton btBuscar;
-	private JLabel lblCategoria;
 	private JButton btRegistrar;
 	private JButton btCancelar;
 	private JButton btSalir;
+	private JFrame jFrame1;
+	private JComboBox cmbCliente;
+	private JButton btBuscar;
+	private JLabel lblCategoria;
 	private JButton btRetirar;
 	private JButton btAgregar;
 	private JTable tbPedido;
@@ -47,11 +49,11 @@ public class formRegisOrden extends javax.swing.JFrame {
 	private JComboBox cmbProducto;
 	private JLabel lblProducto;
 	private JComboBox cmbCategoria;
-	private JFrame jFrame1;
 	private JLabel lblPedido;
 	private JPanel pnPedido;
 	private JLabel lblNumero;
 	private JLabel lblCliente;
+	private JPanel pnDatos;
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -79,12 +81,40 @@ public class formRegisOrden extends javax.swing.JFrame {
 				pnRegisOrden = new JPanel();
 				getContentPane().add(pnRegisOrden, BorderLayout.CENTER);
 				pnRegisOrden.setLayout(null);
+				pnRegisOrden.setBackground(new java.awt.Color(14,89,14));
+				{
+					btSalir = new JButton();
+					pnRegisOrden.add(btSalir);
+					btSalir.setText("Salir");
+					btSalir.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/door_out.png")));
+					btSalir.setFont(new java.awt.Font("Purisa",1,11));
+					btSalir.setBounds(523, 337, 103, 28);
+					btSalir.setBackground(new java.awt.Color(255,255,255));
+				}
+				{
+					btCancelar = new JButton();
+					pnRegisOrden.add(btCancelar);
+					btCancelar.setText("Cancelar");
+					btCancelar.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/cancel.png")));
+					btCancelar.setFont(new java.awt.Font("Purisa",1,11));
+					btCancelar.setBounds(395, 337, 108, 28);
+					btCancelar.setBackground(new java.awt.Color(255,255,255));
+				}
+				{
+					btRegistrar = new JButton();
+					pnRegisOrden.add(btRegistrar);
+					btRegistrar.setText("Registrar");
+					btRegistrar.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/add.png")));
+					btRegistrar.setFont(new java.awt.Font("Purisa",1,11));
+					btRegistrar.setBounds(253, 337, 122, 28);
+					btRegistrar.setBackground(new java.awt.Color(255,255,255));
+				}
 				{
 					pnDatos = new JPanel();
 					pnRegisOrden.add(pnDatos);
-					pnDatos.setBounds(27, 22, 630, 303);
+					pnDatos.setBackground(new java.awt.Color(255,255,255));
 					pnDatos.setLayout(null);
-					pnDatos.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0,0,0)));
+					pnDatos.setBounds(27, 22, 630, 303);
 					{
 						ComboBoxModel cmbClienteModel = 
 							new DefaultComboBoxModel(
@@ -92,42 +122,50 @@ public class formRegisOrden extends javax.swing.JFrame {
 						cmbCliente = new JComboBox();
 						pnDatos.add(cmbCliente);
 						cmbCliente.setModel(cmbClienteModel);
+						cmbCliente.setFont(new java.awt.Font("Purisa",1,11));
 						cmbCliente.setBounds(97, 15, 167, 22);
 					}
 					{
 						lblCliente = new JLabel();
 						pnDatos.add(lblCliente);
 						lblCliente.setText("Cliente:");
-						lblCliente.setBounds(38, 19, 47, 15);
+						lblCliente.setFont(new java.awt.Font("Purisa",1,11));
+						lblCliente.setBounds(38, 19, 59, 15);
 					}
 					{
 						btBuscar = new JButton();
 						pnDatos.add(btBuscar);
-						btBuscar.setBounds(276, 15, 25, 21);
 						btBuscar.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/zoom.png")));
+						btBuscar.setBackground(new java.awt.Color(255,255,255));
+						btBuscar.setBounds(276, 15, 25, 21);
+						btBuscar.addActionListener(null);
 					}
 					{
 						lblNumero = new JLabel();
 						pnDatos.add(lblNumero);
 						lblNumero.setText("N° 00001");
-						lblNumero.setBounds(552, 13, 59, 15);
+						lblNumero.setFont(new java.awt.Font("Purisa",1,11));
+						lblNumero.setBounds(552, 13, 65, 15);
 					}
 					{
 						pnPedido = new JPanel();
 						pnDatos.add(pnPedido);
-						pnPedido.setBounds(26, 55, 568, 231);
+						pnPedido.setBackground(new java.awt.Color(202,255,181));
+						pnPedido.setBorder(BorderFactory.createMatteBorder(1,1,1,1,new java.awt.Color(0,0,0)));
 						pnPedido.setLayout(null);
-						pnPedido.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0,0,0)));
+						pnPedido.setBounds(26, 55, 568, 231);
 						{
 							lblPedido = new JLabel();
 							pnPedido.add(lblPedido);
 							lblPedido.setText("Pedido");
+							lblPedido.setFont(new java.awt.Font("Purisa",1,11));
 							lblPedido.setBounds(13, 5, 43, 15);
 						}
 						{
 							lblCategoria = new JLabel();
 							pnPedido.add(lblCategoria);
 							lblCategoria.setText("Categoria:");
+							lblCategoria.setFont(new java.awt.Font("Purisa",1,11));
 							lblCategoria.setBounds(13, 32, 80, 15);
 						}
 						{
@@ -137,13 +175,15 @@ public class formRegisOrden extends javax.swing.JFrame {
 							cmbCategoria = new JComboBox();
 							pnPedido.add(cmbCategoria);
 							cmbCategoria.setModel(cmbCategoriaModel);
+							cmbCategoria.setFont(new java.awt.Font("Purisa",1,11));
 							cmbCategoria.setBounds(88, 32, 129, 22);
 						}
 						{
 							lblProducto = new JLabel();
 							pnPedido.add(lblProducto);
 							lblProducto.setText("Producto:");
-							lblProducto.setBounds(229, 36, 61, 15);
+							lblProducto.setFont(new java.awt.Font("Purisa",1,11));
+							lblProducto.setBounds(223, 36, 74, 15);
 						}
 						{
 							ComboBoxModel cmbProductoModel = 
@@ -152,12 +192,14 @@ public class formRegisOrden extends javax.swing.JFrame {
 							cmbProducto = new JComboBox();
 							pnPedido.add(cmbProducto);
 							cmbProducto.setModel(cmbProductoModel);
+							cmbProducto.setFont(new java.awt.Font("Purisa",1,11));
 							cmbProducto.setBounds(296, 32, 133, 22);
 						}
 						{
 							lblCantidad = new JLabel();
 							pnPedido.add(lblCantidad);
 							lblCantidad.setText("Cantidad:");
+							lblCantidad.setFont(new java.awt.Font("Purisa",1,11));
 							lblCantidad.setBounds(441, 36, 60, 15);
 						}
 						{
@@ -168,55 +210,29 @@ public class formRegisOrden extends javax.swing.JFrame {
 						{
 							TableModel tbPedidoModel = 
 								new DefaultTableModel(
-										new String[][] { { "Categoria", "Producto", "Cantidad", "Precio" } },
-										new String[] { "Categoria", "Producto", "Cantidad", "Precio" });
+										new String[][] { { "One", "Two" }, { "Three", "Four" } },
+										new String[] { "Column 1", "Column 2" });
 							tbPedido = new JTable();
 							pnPedido.add(tbPedido);
 							tbPedido.setModel(tbPedidoModel);
+							tbPedido.setFont(new java.awt.Font("Purisa",1,11));
 							tbPedido.setBounds(19, 88, 482, 113);
 						}
 						{
 							btAgregar = new JButton();
 							pnPedido.add(btAgregar);
+							btAgregar.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/accept.png")));
+							btAgregar.setBackground(new java.awt.Color(255,255,255));
 							btAgregar.setBounds(518, 88, 30, 25);
-							btAgregar.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/add.png")));
 						}
 						{
 							btRetirar = new JButton();
 							pnPedido.add(btRetirar);
-							btRetirar.setBounds(518, 118, 30, 27);
 							btRetirar.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/delete.png")));
-						}
-						{
-							jFrame1 = new JFrame();
-							pnPedido.add(jFrame1);
-							jFrame1.setBounds(-12, -60, 609, 388);
+							btRetirar.setBackground(new java.awt.Color(255,255,255));
+							btRetirar.setBounds(518, 118, 30, 27);
 						}
 					}
-				}
-				{
-					btSalir = new JButton();
-					pnRegisOrden.add(btSalir);
-					btSalir.setText("Salir");
-					btSalir.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/door_out.png")));
-					btSalir.setFont(new java.awt.Font("Purisa",1,11));
-					btSalir.setBounds(521, 347, 103, 28);
-				}
-				{
-					btCancelar = new JButton();
-					pnRegisOrden.add(btCancelar);
-					btCancelar.setText("Cancelar");
-					btCancelar.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/cancel.png")));
-					btCancelar.setFont(new java.awt.Font("Purisa",1,11));
-					btCancelar.setBounds(394, 347, 108, 28);
-				}
-				{
-					btRegistrar = new JButton();
-					pnRegisOrden.add(btRegistrar);
-					btRegistrar.setText("Registrar");
-					btRegistrar.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/add.png")));
-					btRegistrar.setFont(new java.awt.Font("Purisa",1,11));
-					btRegistrar.setBounds(252, 347, 122, 28);
 				}
 			}
 			pack();
@@ -227,4 +243,11 @@ public class formRegisOrden extends javax.swing.JFrame {
 		}
 	}
 
+	public void AgregarEscuchadores(ActionListener actionlistener){
+		this.btAgregar.addActionListener(actionlistener);
+		this.btBuscar.addActionListener(actionlistener);
+		this.btCancelar.addActionListener(actionlistener);
+		this.btRegistrar.addActionListener(actionlistener);
+		this.btSalir.addActionListener(actionlistener);
+	}
 }

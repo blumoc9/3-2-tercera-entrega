@@ -1,5 +1,7 @@
 package Vista;
 import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -128,6 +130,7 @@ public class formRegisCliente extends javax.swing.JFrame {
 					btRegistrar.setBounds(28, 212, 127, 21);
 					btRegistrar.setFont(new java.awt.Font("Purisa",1,11));
 					btRegistrar.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/add.png")));
+					btRegistrar.setBackground(new java.awt.Color(255,255,255));
 				}
 				{
 					btCancelar = new JButton();
@@ -136,6 +139,7 @@ public class formRegisCliente extends javax.swing.JFrame {
 					btCancelar.setBounds(160, 212, 115, 21);
 					btCancelar.setFont(new java.awt.Font("Purisa",1,11));
 					btCancelar.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/cancel.png")));
+					btCancelar.setBackground(new java.awt.Color(255,255,255));
 				}
 				{
 					btSalir = new JButton();
@@ -144,6 +148,7 @@ public class formRegisCliente extends javax.swing.JFrame {
 					btSalir.setBounds(280, 212, 94, 21);
 					btSalir.setFont(new java.awt.Font("Purisa",1,11));
 					btSalir.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/door_out.png")));
+					btSalir.setBackground(new java.awt.Color(255,255,255));
 				}
 			}
 			pack();
@@ -153,5 +158,44 @@ public class formRegisCliente extends javax.swing.JFrame {
 			e.printStackTrace();
 		}
 	}
+	
+	public void AgregarEscuchadores(ActionListener actionlistener){
+		this.btCancelar.addActionListener(actionlistener);
+		this.btRegistrar.addActionListener(actionlistener);
+		this.btSalir.addActionListener(actionlistener);
+	}
 
+	public JTextField getTxtNombre() {
+		return txtNombre;
+	}
+
+	public JTextField getTxtTelefono() {
+		return txtTelefono;
+	}
+
+	public JTextField getTxtDireccion() {
+		return txtDireccion;
+	}
+
+	public JTextField getTxtCedula() {
+		return txtCedula;
+	}
+
+	public void setTxtNombre(JTextField txtNombre) {
+		this.txtNombre = txtNombre;
+	}
+
+	public void setTxtTelefono(JTextField txtTelefono) {
+		this.txtTelefono = txtTelefono;
+	}
+
+	public void setTxtDireccion(JTextField txtDireccion) {
+		this.txtDireccion = txtDireccion;
+	}
+
+	public void setTxtCedula(JTextField txtCedula) {
+		this.txtCedula = txtCedula;
+	}
+	
+	
 }

@@ -1,5 +1,7 @@
 package Vista;
 import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -104,6 +106,7 @@ public class formRegistCategoria extends javax.swing.JFrame {
 					btRegistrar.setBounds(23, 168, 116, 21);
 					btRegistrar.setFont(new java.awt.Font("Purisa",1,11));
 					btRegistrar.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/add.png")));
+					btRegistrar.setBackground(new java.awt.Color(255,255,255));
 				}
 				{
 					btCancelar = new JButton();
@@ -112,6 +115,7 @@ public class formRegistCategoria extends javax.swing.JFrame {
 					btCancelar.setBounds(144, 168, 108, 21);
 					btCancelar.setFont(new java.awt.Font("Purisa",1,11));
 					btCancelar.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/cancel.png")));
+					btCancelar.setBackground(new java.awt.Color(255,255,255));
 				}
 				{
 					btSalir = new JButton();
@@ -120,6 +124,7 @@ public class formRegistCategoria extends javax.swing.JFrame {
 					btSalir.setBounds(257, 168, 85, 21);
 					btSalir.setFont(new java.awt.Font("Purisa",1,11));
 					btSalir.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/door_out.png")));
+					btSalir.setBackground(new java.awt.Color(255,255,255));
 				}
 			}
 			pack();
@@ -128,6 +133,12 @@ public class formRegistCategoria extends javax.swing.JFrame {
 		    //add your error handling code here
 			e.printStackTrace();
 		}
+	}
+	
+	public void AgregarEscuchadores(ActionListener actionlistener){
+		this.btCancelar.addActionListener(actionlistener);
+		this.btRegistrar.addActionListener(actionlistener);
+		this.btSalir.addActionListener(actionlistener);
 	}
 
 }

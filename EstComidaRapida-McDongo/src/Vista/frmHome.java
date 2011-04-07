@@ -1,5 +1,8 @@
 package Vista;
 import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
+
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -58,9 +61,11 @@ public class frmHome extends javax.swing.JFrame {
 		try {
 			setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 			this.setTitle("MC' Dongo");
+			getContentPane().setBackground(new java.awt.Color(14,89,14));
 			{
 				mnuPantalla = new JMenuBar();
 				setJMenuBar(mnuPantalla);
+				mnuPantalla.setBackground(new java.awt.Color(255,255,255));
 				{
 					mnuArchivo = new JMenu();
 					mnuPantalla.add(mnuArchivo);
@@ -69,26 +74,32 @@ public class frmHome extends javax.swing.JFrame {
 						mnuiRegistrarCatego = new JMenuItem();
 						mnuArchivo.add(mnuiRegistrarCatego);
 						mnuiRegistrarCatego.setText("Registrar Categoria");
+						mnuiRegistrarCatego.setFont(new java.awt.Font("Purisa",1,11));
 					}
 					{
 						mnuiRegisProd = new JMenuItem();
 						mnuArchivo.add(mnuiRegisProd);
 						mnuiRegisProd.setText("Registrar Producto");
+						mnuiRegisProd.setFont(new java.awt.Font("Purisa",1,11));
 					}
 					{
 						mnuiRegisCompIngre = new JMenuItem();
 						mnuArchivo.add(mnuiRegisCompIngre);
 						mnuiRegisCompIngre.setText("Registrar Compra de Ingredientes");
+						mnuiRegisCompIngre.setFont(new java.awt.Font("Purisa",1,11));
 					}
 					{
 						mnuiRegisOrd = new JMenuItem();
 						mnuArchivo.add(mnuiRegisOrd);
 						mnuiRegisOrd.setText("Registrar Orden");
+						mnuiRegisOrd.setFont(new java.awt.Font("Purisa",1,11));
 					}
 					{
 						mnuiRegisCte = new JMenuItem();
 						mnuArchivo.add(mnuiRegisCte);
 						mnuiRegisCte.setText("Registrar Cliente");
+						mnuiRegisCte.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/user_add.png")));
+						mnuiRegisCte.setFont(new java.awt.Font("Purisa",1,11));
 					}
 				}
 				{
@@ -99,16 +110,22 @@ public class frmHome extends javax.swing.JFrame {
 						mnuVentas = new JMenuItem();
 						mnuListados.add(mnuVentas);
 						mnuVentas.setText("Venta de Productos");
+						mnuVentas.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/application_view_list.png")));
+						mnuVentas.setFont(new java.awt.Font("Purisa",1,11));
 					}
 					{
 						mnuCantidadIngre = new JMenuItem();
 						mnuListados.add(mnuCantidadIngre);
 						mnuCantidadIngre.setText("Ingredientes Disponibles ");
+						mnuCantidadIngre.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/application_side_list.png")));
+						mnuCantidadIngre.setFont(new java.awt.Font("Purisa",1,11));
 					}
 					{
 						mnuIngreUsado = new JMenuItem();
 						mnuListados.add(mnuIngreUsado);
 						mnuIngreUsado.setText("Ingredientes mas usados");
+						mnuIngreUsado.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/application_tile_horizontal.png")));
+						mnuIngreUsado.setFont(new java.awt.Font("Purisa",1,12));
 					}
 				}
 				{
@@ -119,6 +136,8 @@ public class frmHome extends javax.swing.JFrame {
 						mnuiSalir = new JMenuItem();
 						mnuSalir.add(mnuiSalir);
 						mnuiSalir.setText("Salir");
+						mnuiSalir.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/door_out.png")));
+						mnuiSalir.setFont(new java.awt.Font("Purisa",1,11));
 					}
 				}
 			}
@@ -129,5 +148,15 @@ public class frmHome extends javax.swing.JFrame {
 			e.printStackTrace();
 		}
 	}
-
+	public void AgregarEscuchadores(ActionListener actionListener) {
+		mnuiRegistrarCatego.addActionListener(actionListener);
+		mnuiRegisProd.addActionListener(actionListener);
+		mnuiRegisCompIngre.addActionListener(actionListener);
+		mnuiRegisOrd.addActionListener(actionListener);
+		mnuiRegisCte.addActionListener(actionListener);
+		mnuVentas.addActionListener(actionListener);
+		mnuCantidadIngre.addActionListener(actionListener);
+		mnuIngreUsado.addActionListener(actionListener);
+		mnuiSalir.addActionListener(actionListener);
+	}
 }
