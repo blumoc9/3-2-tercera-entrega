@@ -1,6 +1,9 @@
 package Vista;
 import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
+
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -24,9 +27,9 @@ import javax.swing.SwingUtilities;
 */
 public class formRegistrarCompra extends javax.swing.JFrame {
 	private JPanel pnRegisCompra;
-	private JButton btRegistrat;
-	private JButton btSalir;
+	private JButton btRegistrar;
 	private JButton btCancelar;
+	private JButton btSalir;
 	private JTextField txtCantidad;
 	private JLabel lblCantidad;
 	private JTextField txtIngrediente;
@@ -59,17 +62,20 @@ public class formRegistrarCompra extends javax.swing.JFrame {
 				pnRegisCompra = new JPanel();
 				getContentPane().add(pnRegisCompra, BorderLayout.CENTER);
 				pnRegisCompra.setLayout(null);
+				pnRegisCompra.setBackground(new java.awt.Color(14,89,14));
 				{
 					pnDatos = new JPanel();
 					pnRegisCompra.add(pnDatos);
 					pnDatos.setBounds(24, 19, 303, 111);
 					pnDatos.setLayout(null);
 					pnDatos.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0,0,0)));
+					pnDatos.setBackground(new java.awt.Color(255,255,255));
 					{
 						lblIngredente = new JLabel();
 						pnDatos.add(lblIngredente);
 						lblIngredente.setText("Ingrediente:");
 						lblIngredente.setBounds(20, 24, 76, 18);
+						lblIngredente.setFont(new java.awt.Font("Purisa",1,11));
 					}
 					{
 						txtIngrediente = new JTextField();
@@ -81,6 +87,7 @@ public class formRegistrarCompra extends javax.swing.JFrame {
 						pnDatos.add(lblCantidad);
 						lblCantidad.setText("Cantidad:");
 						lblCantidad.setBounds(20, 68, 60, 14);
+						lblCantidad.setFont(new java.awt.Font("Purisa",1,11));
 					}
 					{
 						txtCantidad = new JTextField();
@@ -89,22 +96,31 @@ public class formRegistrarCompra extends javax.swing.JFrame {
 					}
 				}
 				{
-					btRegistrat = new JButton();
-					pnRegisCompra.add(btRegistrat);
-					btRegistrat.setText("Registrar");
-					btRegistrat.setBounds(71, 155, 71, 21);
+					btSalir = new JButton();
+					pnRegisCompra.add(btSalir);
+					btSalir.setText("Salir");
+					btSalir.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/door_out.png")));
+					btSalir.setFont(new java.awt.Font("Purisa",1,11));
+					btSalir.setBounds(230, 166, 93, 21);
+					btSalir.setBackground(new java.awt.Color(255,255,255));
 				}
 				{
 					btCancelar = new JButton();
 					pnRegisCompra.add(btCancelar);
 					btCancelar.setText("Cancelar");
-					btCancelar.setBounds(159, 155, 69, 21);
+					btCancelar.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/cancel.png")));
+					btCancelar.setFont(new java.awt.Font("Purisa",1,11));
+					btCancelar.setBounds(129, 166, 96, 21);
+					btCancelar.setBackground(new java.awt.Color(255,255,255));
 				}
 				{
-					btSalir = new JButton();
-					pnRegisCompra.add(btSalir);
-					btSalir.setText("Salir");
-					btSalir.setBounds(247, 155, 56, 21);
+					btRegistrar = new JButton();
+					pnRegisCompra.add(btRegistrar);
+					btRegistrar.setText("Registrar");
+					btRegistrar.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/add.png")));
+					btRegistrar.setFont(new java.awt.Font("Purisa",1,11));
+					btRegistrar.setBounds(26, 166, 98, 21);
+					btRegistrar.setBackground(new java.awt.Color(255,255,255));
 				}
 			}
 			pack();
@@ -113,6 +129,12 @@ public class formRegistrarCompra extends javax.swing.JFrame {
 		    //add your error handling code here
 			e.printStackTrace();
 		}
+	}
+	
+	public void AgregarEscuchadores(ActionListener actionlistener){
+		this.btCancelar.addActionListener(actionlistener);
+		this.btRegistrar.addActionListener(actionlistener);
+		this.btSalir.addActionListener(actionlistener);
 	}
 
 }
