@@ -1,16 +1,20 @@
 package Vista;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
+
+import bean.JTextFieldValidator;
 
 
 /**
@@ -27,18 +31,19 @@ import javax.swing.SwingUtilities;
 */
 public class formRegisCliente extends javax.swing.JFrame {
 	private JPanel pnRegisCliente;
-	private JButton btSalir;
+	private JTextFieldValidator txtTelefono;
 	private JPanel pnDatos;
-	private JTextField txtNombre;
-	private JButton btCancelar;
-	private JButton btRegistrar;
-	private JTextField txtTelefono;
-	private JTextField txtDireccion;
-	private JTextField txtCedula;
+	private JTextFieldValidator txtNombre;
+	private JTextFieldValidator txtDireccion;
+	private JTextFieldValidator txtCedula;
 	private JLabel lblTelefono;
 	private JLabel lblDireccion;
 	private JLabel lblNombre;
 	private JLabel lblCedula;
+	private JButton btSalir;
+	private JButton btCancelar;
+	private JButton btRegistrar;
+	private JOptionPane mensaje;
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -68,62 +73,6 @@ public class formRegisCliente extends javax.swing.JFrame {
 				pnRegisCliente.setLayout(null);
 				pnRegisCliente.setBackground(new java.awt.Color(14,89,14));
 				{
-					pnDatos = new JPanel();
-					pnRegisCliente.add(pnDatos);
-					pnDatos.setBounds(12, 12, 366, 181);
-					pnDatos.setLayout(null);
-					pnDatos.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0,0,0)));
-					pnDatos.setBackground(new java.awt.Color(255,255,255));
-					{
-						lblCedula = new JLabel();
-						pnDatos.add(lblCedula);
-						lblCedula.setText("Cedula:");
-						lblCedula.setBounds(19, 21, 61, 14);
-						lblCedula.setFont(new java.awt.Font("Purisa",1,11));
-					}
-					{
-						lblNombre = new JLabel();
-						pnDatos.add(lblNombre);
-						lblNombre.setText("Nombre:");
-						lblNombre.setBounds(19, 52, 72, 14);
-						lblNombre.setFont(new java.awt.Font("Purisa",1,11));
-					}
-					{
-						lblDireccion = new JLabel();
-						pnDatos.add(lblDireccion);
-						lblDireccion.setText("Direccion:");
-						lblDireccion.setBounds(19, 83, 72, 14);
-						lblDireccion.setFont(new java.awt.Font("Purisa",1,11));
-					}
-					{
-						lblTelefono = new JLabel();
-						pnDatos.add(lblTelefono);
-						lblTelefono.setText("Telefono:");
-						lblTelefono.setBounds(23, 145, 76, 14);
-						lblTelefono.setFont(new java.awt.Font("Purisa",1,11));
-					}
-					{
-						txtCedula = new JTextField();
-						pnDatos.add(txtCedula);
-						txtCedula.setBounds(98, 18, 119, 21);
-					}
-					{
-						txtNombre = new JTextField();
-						pnDatos.add(txtNombre);
-						txtNombre.setBounds(98, 49, 240, 21);
-					}
-					{
-						txtDireccion = new JTextField();
-						pnDatos.add(txtDireccion);
-						txtDireccion.setBounds(99, 80, 239, 44);
-					}
-					{
-						txtTelefono = new JTextField();
-						pnDatos.add(txtTelefono);
-						txtTelefono.setBounds(99, 142, 126, 21);
-					}
-				}
-				{
 					btRegistrar = new JButton();
 					pnRegisCliente.add(btRegistrar);
 					btRegistrar.setText("Registrar");
@@ -149,6 +98,70 @@ public class formRegisCliente extends javax.swing.JFrame {
 					btSalir.setFont(new java.awt.Font("Purisa",1,11));
 					btSalir.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/door_out.png")));
 					btSalir.setBackground(new java.awt.Color(255,255,255));
+				}
+				{
+					pnDatos = new JPanel();
+					pnRegisCliente.add(pnDatos);
+					pnDatos.setBackground(new java.awt.Color(255,255,255));
+					pnDatos.setBorder(BorderFactory.createMatteBorder(1,1,1,1,new java.awt.Color(0,0,0)));
+					pnDatos.setLayout(null);
+					pnDatos.setBounds(12, 12, 366, 181);
+					{
+						lblCedula = new JLabel();
+						pnDatos.add(lblCedula);
+						lblCedula.setText("Cedula:");
+						lblCedula.setFont(new java.awt.Font("Purisa",1,11));
+						lblCedula.setBounds(19, 21, 61, 14);
+					}
+					{
+						lblNombre = new JLabel();
+						pnDatos.add(lblNombre);
+						lblNombre.setText("Nombre:");
+						lblNombre.setFont(new java.awt.Font("Purisa",1,11));
+						lblNombre.setBounds(19, 52, 72, 14);
+					}
+					{
+						lblDireccion = new JLabel();
+						pnDatos.add(lblDireccion);
+						lblDireccion.setText("Direccion:");
+						lblDireccion.setFont(new java.awt.Font("Purisa",1,11));
+						lblDireccion.setBounds(19, 83, 72, 14);
+					}
+					{
+						lblTelefono = new JLabel();
+						pnDatos.add(lblTelefono);
+						lblTelefono.setText("Telefono:");
+						lblTelefono.setFont(new java.awt.Font("Purisa",1,11));
+						lblTelefono.setBounds(23, 145, 76, 14);
+					}
+					{
+						txtCedula = new JTextFieldValidator();
+						pnDatos.add(txtCedula);
+						txtCedula.setBounds(98, 18, 119, 21);
+						txtCedula.setMaximaLongitud(9);
+						txtCedula.setTipoCaracteresPermitidos(JTextFieldValidator.SOLO_NUMEROS);
+					}
+					{
+						txtNombre = new JTextFieldValidator();
+						pnDatos.add(txtNombre);
+						txtNombre.setMaximaLongitud(40);
+						txtNombre.setTipoCaracteresPermitidos(JTextFieldValidator.LETRAS_Y_ESPACIOS);
+						txtNombre.setBounds(98, 49, 240, 21);
+					}
+					{
+						txtDireccion = new JTextFieldValidator();
+						pnDatos.add(txtDireccion);
+						txtDireccion.setMaximaLongitud(75);
+						txtDireccion.setTipoCaracteresPermitidos(JTextFieldValidator.LETRAS_Y_ESPACIOS);
+						txtDireccion.setBounds(99, 80, 239, 44);
+					}
+					{
+						txtTelefono = new JTextFieldValidator();
+						pnDatos.add(txtTelefono);
+						txtTelefono.setMaximaLongitud(11);
+						txtTelefono.setTipoCaracteresPermitidos(JTextFieldValidator.SOLO_NUMEROS);
+						txtTelefono.setBounds(99, 142, 126, 21);
+					}
 				}
 			}
 			pack();
@@ -181,20 +194,17 @@ public class formRegisCliente extends javax.swing.JFrame {
 		return txtCedula;
 	}
 
-	public void setTxtNombre(JTextField txtNombre) {
-		this.txtNombre = txtNombre;
+
+	public JOptionPane getMensaje() {
+		return mensaje;
 	}
 
-	public void setTxtTelefono(JTextField txtTelefono) {
-		this.txtTelefono = txtTelefono;
+	public JButton getBtCancelar() {
+		return btCancelar;
 	}
 
-	public void setTxtDireccion(JTextField txtDireccion) {
-		this.txtDireccion = txtDireccion;
-	}
-
-	public void setTxtCedula(JTextField txtCedula) {
-		this.txtCedula = txtCedula;
+	public JButton getBtRegistrar() {
+		return btRegistrar;
 	}
 	
 	
