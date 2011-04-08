@@ -6,6 +6,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -14,6 +15,8 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.SwingUtilities;
+
+import bean.JTextFieldValidator;
 
 
 /**
@@ -31,13 +34,14 @@ import javax.swing.SwingUtilities;
 public class formRegistCategoria extends javax.swing.JFrame {
 	private JPanel pnRegistrarCateg;
 	private JPanel pnDatos;
-	private JTextField txtCodigo;
-	private JTextField txtNombre;
+	private JTextFieldValidator txtCodigo;
+	private JTextFieldValidator txtNombre;
 	private JButton btSalir;
 	private JButton btCancelar;
 	private JButton btRegistrar;
 	private JLabel lblNombre;
 	private JLabel lblCodigo;
+	private JOptionPane mensaje;
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -89,14 +93,18 @@ public class formRegistCategoria extends javax.swing.JFrame {
 						lblNombre.setFont(new java.awt.Font("Purisa",1,11));
 					}
 					{
-						txtCodigo = new JTextField();
+						txtCodigo = new JTextFieldValidator();
 						pnDatos.add(txtCodigo);
 						txtCodigo.setBounds(89, 22, 92, 21);
+						txtCodigo.setMaximaLongitud(15);
+						txtCodigo.setTipoCaracteresPermitidos(JTextFieldValidator.LETRAS_Y_NUMEROS);
 					}
 					{
-						txtNombre = new JTextField();
+						txtNombre = new JTextFieldValidator();
 						pnDatos.add(txtNombre);
 						txtNombre.setBounds(89, 55, 142, 21);
+						txtNombre.setMaximaLongitud(20);
+						txtNombre.setTipoCaracteresPermitidos(JTextFieldValidator.LETRAS_Y_ESPACIOS);
 					}
 				}
 				{
@@ -141,4 +149,28 @@ public class formRegistCategoria extends javax.swing.JFrame {
 		this.btSalir.addActionListener(actionlistener);
 	}
 
+	public JTextField getTxtCodigo() {
+		return txtCodigo;
+	}
+
+	public JTextField getTxtNombre() {
+		return txtNombre;
+	}
+
+	public JOptionPane getMensaje() {
+		return mensaje;
+	}
+
+	public JButton getBtSalir() {
+		return btSalir;
+	}
+
+	public JButton getBtCancelar() {
+		return btCancelar;
+	}
+
+	public JButton getBtRegistrar() {
+		return btRegistrar;
+	}
+	
 }
