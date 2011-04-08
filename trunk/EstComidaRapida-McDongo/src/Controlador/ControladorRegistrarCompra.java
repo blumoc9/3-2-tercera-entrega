@@ -32,19 +32,19 @@ public class ControladorRegistrarCompra implements ActionListener {
 				Registrarcompra.getMensaje().showMessageDialog(Registrarcompra.getBtRegistrar(), "Debe llenar todo los Campos");
 			}
 			else{
-				tiraSQL= "SELECT * FROM insumos where codigo= '"+Registrarcompra.getTxtIngrediente().getText()+"' and estatus='A'";
-				ResultSet resultSet = Conexion.consultar(tiraSQL);
-				try {
-					if(!resultSet.next()){
+				try {	
+					tiraSQL="SELECT * FROM insumos where codigo='"+Registrarcompra.getTxtIngrediente().getText()+"' and estatus='A'";
+					ResultSet resultSet1 = Conexion.consultar(tiraSQL);
+					if(!resultSet1.next()){
 						tiraSQL="INSERT INTO insumos (codigo,nombre,stock,estatus) VALUES ('"+Registrarcompra.getTxtIngrediente().getText()+"','"+Registrarcompra.getTxtNombre().getText()+"','"+Registrarcompra.getTxtCantidad().getText()+"','A')";
 						Conexion.ejecutar(tiraSQL);
 						Registrarcompra.getMensaje().showMessageDialog(Registrarcompra.getBtRegistrar(), "Ingrediente Registrado");
-						LimpiarPantalla();
 					}
 					else{
-						Registrarcompra.getMensaje().showMessageDialog(Registrarcompra.getBtRegistrar(), "El Ingrediente ya esta Registrado");
-						LimpiarPantalla();
+						tiraSQL="UPDATE insumos set stock='"+(Float.parseFloat(Registrarcompra.getTxtCantidad().getText())+Float.parseFloat(resultSet1.getString("stock")))+"' where codigo='"+Registrarcompra.getTxtIngrediente().getText()+"' and estatus='A'";
+						Conexion.ejecutar(tiraSQL);
 					}
+					LimpiarPantalla();
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
