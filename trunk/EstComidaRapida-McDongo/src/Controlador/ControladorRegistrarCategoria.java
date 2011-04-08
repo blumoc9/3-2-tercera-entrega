@@ -15,6 +15,7 @@ public class ControladorRegistrarCategoria implements ActionListener{
 	
 	public ControladorRegistrarCategoria() {
 		super();
+		Conexion.establecerPropiedadesConexion("bdconfig", "jdbc.driver", "jdbc.url", "jdbc.nombrebd", "jdbc.usuario", "jdbc.password");
 		this.Categoria = new formRegistCategoria();
 		this.Categoria.setLocationRelativeTo(null);
 		this.Categoria.setVisible(true);	
@@ -24,22 +25,22 @@ public class ControladorRegistrarCategoria implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String actionCommand = e.getActionCommand();
-		String tiraSQL;
+		String SQL;
 		if(actionCommand.equals("Registrar")){
-			if(Categoria.getTxtCodigo().equals("")||Categoria.getTxtNombre().equals("")){
-				Categoria.getMensaje().showConfirmDialog(Categoria.getBtRegistrar(), "Debe llenar todos los Campos");
+			if(Categoria.getTxtCodigo().getText().equals("") || Categoria.getTxtNombre().getText().equals("")){
+				Categoria.getMensaje().showMessageDialog(Categoria.getBtRegistrar(), "Debe llenar todos los Campos");
 			}
 			else{
-				tiraSQL= "SELECT * FROM categoria where codigo='"+Categoria.getTxtCodigo().getText()+"'and estatus='A' ";
-				ResultSet resultSet = Conexion.consultar(tiraSQL);
+				SQL= "SELECT * FROM categoria where codigo='"+Categoria.getTxtCodigo().getText()+"'and estatus='A' ";
+				ResultSet resultSet = Conexion.consultar(SQL);
 			try {
 				if(!resultSet.next()){
-					tiraSQL= "INSERT INTO categoria (codigo, nombre, estatus) VALUES ('"+Categoria.getTxtCodigo().getText()+"','"+Categoria.getTxtNombre().getText()+"','A'";
-					Conexion.ejecutar(tiraSQL);
-					Categoria.getMensaje().showConfirmDialog(Categoria.getBtRegistrar(), "Categoria Registrada Exitosamente");
+					SQL= "INSERT INTO categoria (codigo, nombre, estatus) VALUES ('"+Categoria.getTxtCodigo().getText()+"','"+Categoria.getTxtNombre().getText()+"','A')";
+					Conexion.ejecutar(SQL);
+					Categoria.getMensaje().showMessageDialog(Categoria.getBtRegistrar(), "Categoria Registrada Exitosamente");
 				}
 				else
-					Categoria.getMensaje().showConfirmDialog(Categoria.getBtRegistrar(), "Categoria Registrada Exitosamente");
+					Categoria.getMensaje().showMessageDialog(Categoria.getBtRegistrar(), "Existe una Categoria con ese Codigo");
 				LimpiarPantalla();
 			} catch (SQLException e1) {
 				e1.printStackTrace();
