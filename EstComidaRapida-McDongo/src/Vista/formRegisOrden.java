@@ -19,6 +19,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.SwingUtilities;
 
+import bean.JTextFieldValidator;
+
 
 /**
 * This code was edited or generated using CloudGarden's Jigloo
@@ -44,7 +46,7 @@ public class formRegisOrden extends javax.swing.JFrame {
 	private JButton btRetirar;
 	private JButton btAgregar;
 	private JTable tbPedido;
-	private JTextField txtCantidad;
+	private JTextFieldValidator txtCantidad;
 	private JLabel lblCantidad;
 	private JComboBox cmbProducto;
 	private JLabel lblProducto;
@@ -203,7 +205,7 @@ public class formRegisOrden extends javax.swing.JFrame {
 							lblCantidad.setBounds(441, 36, 60, 15);
 						}
 						{
-							txtCantidad = new JTextField();
+							txtCantidad = new JTextFieldValidator();
 							pnPedido.add(txtCantidad);
 							txtCantidad.setBounds(513, 33, 35, 22);
 						}

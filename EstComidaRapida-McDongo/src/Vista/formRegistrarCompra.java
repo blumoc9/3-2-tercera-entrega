@@ -6,11 +6,14 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import javax.swing.WindowConstants;
 import javax.swing.SwingUtilities;
+
+import bean.JTextFieldValidator;
 
 
 /**
@@ -27,14 +30,17 @@ import javax.swing.SwingUtilities;
 */
 public class formRegistrarCompra extends javax.swing.JFrame {
 	private JPanel pnRegisCompra;
+	private JTextFieldValidator txtNombre;
+	private JLabel lblnombre;
 	private JButton btRegistrar;
 	private JButton btCancelar;
 	private JButton btSalir;
-	private JTextField txtCantidad;
+	private JTextFieldValidator txtCantidad;
 	private JLabel lblCantidad;
-	private JTextField txtIngrediente;
+	private JTextFieldValidator txtIngrediente;
 	private JLabel lblIngredente;
 	private JPanel pnDatos;
+	private JOptionPane mensaje;
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -66,7 +72,7 @@ public class formRegistrarCompra extends javax.swing.JFrame {
 				{
 					pnDatos = new JPanel();
 					pnRegisCompra.add(pnDatos);
-					pnDatos.setBounds(24, 19, 303, 111);
+					pnDatos.setBounds(24, 19, 303, 135);
 					pnDatos.setLayout(null);
 					pnDatos.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0,0,0)));
 					pnDatos.setBackground(new java.awt.Color(255,255,255));
@@ -74,25 +80,43 @@ public class formRegistrarCompra extends javax.swing.JFrame {
 						lblIngredente = new JLabel();
 						pnDatos.add(lblIngredente);
 						lblIngredente.setText("Ingrediente:");
-						lblIngredente.setBounds(20, 24, 76, 18);
+						lblIngredente.setBounds(15, 23, 87, 18);
 						lblIngredente.setFont(new java.awt.Font("Purisa",1,11));
 					}
 					{
-						txtIngrediente = new JTextField();
+						txtIngrediente = new JTextFieldValidator();
 						pnDatos.add(txtIngrediente);
-						txtIngrediente.setBounds(114, 23, 104, 21);
+						txtIngrediente.setBounds(112, 20, 104, 21);
+						txtIngrediente.setMaximaLongitud(15);
+						txtIngrediente.setTipoCaracteresPermitidos(JTextFieldValidator.LETRAS_Y_NUMEROS);
 					}
 					{
 						lblCantidad = new JLabel();
 						pnDatos.add(lblCantidad);
 						lblCantidad.setText("Cantidad:");
-						lblCantidad.setBounds(20, 68, 60, 14);
+						lblCantidad.setBounds(15, 106, 60, 14);
 						lblCantidad.setFont(new java.awt.Font("Purisa",1,11));
 					}
 					{
-						txtCantidad = new JTextField();
+						txtCantidad = new JTextFieldValidator();
 						pnDatos.add(txtCantidad);
-						txtCantidad.setBounds(114, 65, 70, 21);
+						txtCantidad.setBounds(112, 101, 70, 21);
+						txtCantidad.setMaximaLongitud(4);
+						txtCantidad.setTipoCaracteresPermitidos(JTextFieldValidator.SOLO_NUMEROS);
+					}
+					{
+						lblnombre = new JLabel();
+						pnDatos.add(lblnombre);
+						lblnombre.setText("Nombre:");
+						lblnombre.setBounds(13, 60, 74, 15);
+						lblnombre.setFont(new java.awt.Font("Purisa",1,11));
+					}
+					{
+						txtNombre = new JTextFieldValidator();
+						pnDatos.add(txtNombre);
+						txtNombre.setBounds(112, 60, 106, 22);
+						txtNombre.setMaximaLongitud(4);
+						txtNombre.setTipoCaracteresPermitidos(JTextFieldValidator.LETRAS_Y_ESPACIOS);
 					}
 				}
 				{
@@ -136,5 +160,34 @@ public class formRegistrarCompra extends javax.swing.JFrame {
 		this.btRegistrar.addActionListener(actionlistener);
 		this.btSalir.addActionListener(actionlistener);
 	}
+
+	public JButton getBtRegistrar() {
+		return btRegistrar;
+	}
+
+	public JButton getBtCancelar() {
+		return btCancelar;
+	}
+
+	public JButton getBtSalir() {
+		return btSalir;
+	}
+
+	public JTextFieldValidator getTxtCantidad() {
+		return txtCantidad;
+	}
+
+	public JTextFieldValidator getTxtIngrediente() {
+		return txtIngrediente;
+	}
+
+	public JOptionPane getMensaje() {
+		return mensaje;
+	}
+
+	public JTextFieldValidator getTxtNombre() {
+		return txtNombre;
+	}
+	
 
 }

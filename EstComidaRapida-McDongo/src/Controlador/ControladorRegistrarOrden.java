@@ -3,6 +3,8 @@ package Controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import bean.Conexion;
+
 import Vista.formRegisOrden;
 
 public class ControladorRegistrarOrden implements ActionListener{
@@ -11,6 +13,7 @@ public class ControladorRegistrarOrden implements ActionListener{
 
 	public ControladorRegistrarOrden() {
 		super();
+		Conexion.establecerPropiedadesConexion("bdconfig", "jdbc.driver", "jdbc.url", "jdbc.nombreBd", "jdbc.usuario", "jdbc.password");
 		this.orden = new formRegisOrden();
 		this.orden.setLocationRelativeTo(null);
 		this.orden.setVisible(true);	
@@ -19,8 +22,11 @@ public class ControladorRegistrarOrden implements ActionListener{
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		
+	public void actionPerformed(ActionEvent e) {
+		String actionCommand = e.getActionCommand();
+		String tiraSQL;
+		if(actionCommand.equals("Registrar")){
+		}
 	}
 	
 }
