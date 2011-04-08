@@ -28,7 +28,7 @@ public class ControladorRegistrarCliente implements ActionListener{
 		String actionCommand = e.getActionCommand();
 		String tiraSQL;
 		if (actionCommand.equals("Registrar")){
-			if ((cliente.getTxtCedula().equals("") || cliente.getTxtDireccion().equals("") || cliente.getTxtNombre().equals("") || cliente.getTxtTelefono().equals("")))
+			if ((cliente.getTxtCedula().getText().equals("")|| cliente.getTxtDireccion().getText().equals("") || cliente.getTxtNombre().getText().equals("") || cliente.getTxtTelefono().getText().equals("")))
 				cliente.getMensaje().showMessageDialog(cliente.getBtRegistrar(), "Debe llenar todos los Campos");
 			else{
 				tiraSQL= "SELECT * FROM cliente where cedula='"+cliente.getTxtCedula().getText()+"' and estatus='A'";
