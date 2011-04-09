@@ -77,7 +77,7 @@ public class formRegistrarCompra extends javax.swing.JFrame {
 				{
 					pnDatos = new JPanel();
 					pnRegisCompra.add(pnDatos);
-					pnDatos.setBounds(16, 12, 448, 253);
+					pnDatos.setBounds(12, 12, 448, 253);
 					pnDatos.setLayout(null);
 					pnDatos.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0,0,0)));
 					pnDatos.setBackground(new java.awt.Color(255,255,255));
@@ -120,7 +120,7 @@ public class formRegistrarCompra extends javax.swing.JFrame {
 						txtNombre = new JTextFieldValidator();
 						pnDatos.add(txtNombre);
 						txtNombre.setBounds(306, 20, 106, 22);
-						txtNombre.setMaximaLongitud(4);
+						txtNombre.setMaximaLongitud(10);
 						txtNombre.setTipoCaracteresPermitidos(JTextFieldValidator.LETRAS_Y_ESPACIOS);
 					}
 				}
@@ -130,7 +130,7 @@ public class formRegistrarCompra extends javax.swing.JFrame {
 					btSalir.setText("Salir");
 					btSalir.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/door_out.png")));
 					btSalir.setFont(new java.awt.Font("Purisa",1,11));
-					btSalir.setBounds(378, 286, 89, 21);
+					btSalir.setBounds(371, 286, 89, 21);
 					btSalir.setBackground(new java.awt.Color(255,255,255));
 				}
 				{
@@ -153,7 +153,7 @@ public class formRegistrarCompra extends javax.swing.JFrame {
 				}
 			}
 			pack();
-			this.setSize(501, 358);
+			this.setSize(485, 358);
 		} catch (Exception e) {
 		    //add your error handling code here
 			e.printStackTrace();

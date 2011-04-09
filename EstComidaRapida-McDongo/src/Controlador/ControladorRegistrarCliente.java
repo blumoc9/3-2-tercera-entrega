@@ -23,6 +23,16 @@ public class ControladorRegistrarCliente implements ActionListener{
 		this.cliente.setVisible(true);	
 		this.cliente.AgregarEscuchadores(this);
 	}
+	public ControladorRegistrarCliente(String cedula) {
+		super();
+		Conexion.establecerPropiedadesConexion("bdconfig", "jdbc.driver", "jdbc.url", "jdbc.nombrebd", "jdbc.usuario", "jdbc.password");
+		this.cliente = new formRegisCliente();
+		this.cliente.setLocationRelativeTo(null);
+		this.cliente.setVisible(true);	
+		this.cliente.getTxtCedula().setText(cedula);
+		this.cliente.getTxtCedula().setEnabled(false);
+		this.cliente.AgregarEscuchadores(this);
+	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String actionCommand = e.getActionCommand();
