@@ -2,8 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
-	<classpathentry kind="lib" path="/home/adriana/workspace/Prueba/lib/Conexion.jar"/>
-	<classpathentry kind="lib" path="/home/adriana/workspace/Prueba/lib/postgresql-9.0-801.jdbc3.jar"/>
-	<classpathentry kind="lib" path="/home/adriana/Documentos/LaboratorioI/Proyecto2/EstComidaRapida-McDongo/lib/JTextFieldValidator.jar"/>
+	<classpathentry kind="lib" path="lib/Conexion.jar"/>
+	<classpathentry kind="lib" path="lib/JTextFieldValidator.jar"/>
+	<classpathentry kind="lib" path="lib/postgresql-9.0-801.jdbc3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
