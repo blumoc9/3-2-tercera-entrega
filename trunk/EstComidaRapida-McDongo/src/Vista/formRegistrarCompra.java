@@ -8,9 +8,12 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import javax.swing.WindowConstants;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import javax.swing.SwingUtilities;
 
 import bean.JTextFieldValidator;
@@ -31,6 +34,7 @@ import bean.JTextFieldValidator;
 public class formRegistrarCompra extends javax.swing.JFrame {
 	private JPanel pnRegisCompra;
 	private JTextFieldValidator txtNombre;
+	private JTable jTable1;
 	private JLabel lblnombre;
 	private JButton btRegistrar;
 	private JButton btCancelar;
@@ -69,17 +73,18 @@ public class formRegistrarCompra extends javax.swing.JFrame {
 				getContentPane().add(pnRegisCompra, BorderLayout.CENTER);
 				pnRegisCompra.setLayout(null);
 				pnRegisCompra.setBackground(new java.awt.Color(14,89,14));
+				pnRegisCompra.setPreferredSize(new java.awt.Dimension(479, 307));
 				{
 					pnDatos = new JPanel();
 					pnRegisCompra.add(pnDatos);
-					pnDatos.setBounds(24, 19, 303, 135);
+					pnDatos.setBounds(16, 12, 448, 253);
 					pnDatos.setLayout(null);
 					pnDatos.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0,0,0)));
 					pnDatos.setBackground(new java.awt.Color(255,255,255));
 					{
 						lblIngredente = new JLabel();
 						pnDatos.add(lblIngredente);
-						lblIngredente.setText("Ingrediente:");
+						lblIngredente.setText("Codigo:");
 						lblIngredente.setBounds(15, 23, 87, 18);
 						lblIngredente.setFont(new java.awt.Font("Purisa",1,11));
 					}
@@ -94,13 +99,13 @@ public class formRegistrarCompra extends javax.swing.JFrame {
 						lblCantidad = new JLabel();
 						pnDatos.add(lblCantidad);
 						lblCantidad.setText("Cantidad:");
-						lblCantidad.setBounds(15, 106, 60, 14);
+						lblCantidad.setBounds(13, 64, 60, 14);
 						lblCantidad.setFont(new java.awt.Font("Purisa",1,11));
 					}
 					{
 						txtCantidad = new JTextFieldValidator();
 						pnDatos.add(txtCantidad);
-						txtCantidad.setBounds(112, 101, 70, 21);
+						txtCantidad.setBounds(112, 59, 70, 21);
 						txtCantidad.setMaximaLongitud(4);
 						txtCantidad.setTipoCaracteresPermitidos(JTextFieldValidator.SOLO_NUMEROS);
 					}
@@ -108,13 +113,13 @@ public class formRegistrarCompra extends javax.swing.JFrame {
 						lblnombre = new JLabel();
 						pnDatos.add(lblnombre);
 						lblnombre.setText("Nombre:");
-						lblnombre.setBounds(13, 60, 74, 15);
+						lblnombre.setBounds(234, 25, 74, 15);
 						lblnombre.setFont(new java.awt.Font("Purisa",1,11));
 					}
 					{
 						txtNombre = new JTextFieldValidator();
 						pnDatos.add(txtNombre);
-						txtNombre.setBounds(112, 60, 106, 22);
+						txtNombre.setBounds(306, 20, 106, 22);
 						txtNombre.setMaximaLongitud(4);
 						txtNombre.setTipoCaracteresPermitidos(JTextFieldValidator.LETRAS_Y_ESPACIOS);
 					}
@@ -125,7 +130,7 @@ public class formRegistrarCompra extends javax.swing.JFrame {
 					btSalir.setText("Salir");
 					btSalir.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/door_out.png")));
 					btSalir.setFont(new java.awt.Font("Purisa",1,11));
-					btSalir.setBounds(230, 166, 93, 21);
+					btSalir.setBounds(378, 286, 89, 21);
 					btSalir.setBackground(new java.awt.Color(255,255,255));
 				}
 				{
@@ -134,7 +139,7 @@ public class formRegistrarCompra extends javax.swing.JFrame {
 					btCancelar.setText("Cancelar");
 					btCancelar.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/cancel.png")));
 					btCancelar.setFont(new java.awt.Font("Purisa",1,11));
-					btCancelar.setBounds(129, 166, 96, 21);
+					btCancelar.setBounds(243, 286, 111, 21);
 					btCancelar.setBackground(new java.awt.Color(255,255,255));
 				}
 				{
@@ -143,12 +148,12 @@ public class formRegistrarCompra extends javax.swing.JFrame {
 					btRegistrar.setText("Registrar");
 					btRegistrar.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/add.png")));
 					btRegistrar.setFont(new java.awt.Font("Purisa",1,11));
-					btRegistrar.setBounds(26, 166, 98, 21);
+					btRegistrar.setBounds(117, 286, 115, 21);
 					btRegistrar.setBackground(new java.awt.Color(255,255,255));
 				}
 			}
 			pack();
-			this.setSize(365, 237);
+			this.setSize(501, 358);
 		} catch (Exception e) {
 		    //add your error handling code here
 			e.printStackTrace();
@@ -187,6 +192,10 @@ public class formRegistrarCompra extends javax.swing.JFrame {
 
 	public JTextFieldValidator getTxtNombre() {
 		return txtNombre;
+	}
+
+	public JPanel getPnDatos() {
+		return pnDatos;
 	}
 	
 

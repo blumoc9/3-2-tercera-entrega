@@ -5,6 +5,10 @@ import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 import bean.Conexion;
 
 import Vista.formRegistrarCompra;
@@ -13,6 +17,7 @@ import Vista.frmHome;
 public class ControladorRegistrarCompra implements ActionListener {
 
 	private formRegistrarCompra Registrarcompra;
+	private JTable tbIngredientes;
 
 	public ControladorRegistrarCompra() {
 		super();
@@ -21,6 +26,7 @@ public class ControladorRegistrarCompra implements ActionListener {
 		this.Registrarcompra.setLocationRelativeTo(null);
 		this.Registrarcompra.setVisible(true);	
 		this.Registrarcompra.AgregarEscuchadores(this);
+		CargarIngrediente();
 	}
 
 	@Override
@@ -45,6 +51,7 @@ public class ControladorRegistrarCompra implements ActionListener {
 						Conexion.ejecutar(tiraSQL);
 					}
 					LimpiarPantalla();
+					CargarIngrediente();
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -62,5 +69,25 @@ public class ControladorRegistrarCompra implements ActionListener {
 		Registrarcompra.getTxtIngrediente().setText("");
 		Registrarcompra.getTxtCantidad().setText("");
 		Registrarcompra.getTxtNombre().setText("");
+	}
+	public void CargarIngrediente(){
+		String[][] datos={{ "Codigo", "Nombre", "stock" }};
+		String[] columnas={ "Codigo", "Nombre", "stock" };
+		TableModel tbInggredientesModel = 	new DefaultTableModel(datos,columnas);
+		tbIngredientes = new JTable(tbInggredientesModel);
+		Registrarcompra.getPnDatos().add(tbIngredientes);
+		tbIngredientes.setModel(tbInggredientesModel);
+		tbIngredientes.setBounds(13, 105, 411, 125);
+		tbIngredientes.setFont(new java.awt.Font("URW Chancery L",2,16));
+		String sql = "SELECT * FROM insumos where estatus='A'";
+		ResultSet resulset = Conexion.consultar(sql);
+		try {
+			while(resulset.next()){
+				String [] newRow = { resulset.getString("codigo"),resulset.getString("nombre"),resulset.getString("stock")};
+				((DefaultTableModel)tbInggredientesModel).addRow(newRow);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
