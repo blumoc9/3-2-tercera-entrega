@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -17,6 +18,8 @@ import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.SwingUtilities;
+
+import bean.JTextFieldValidator;
 
 
 /**
@@ -35,23 +38,25 @@ public class formRegistProduc extends javax.swing.JFrame {
 	private JPanel pnRegisProduc;
 	private JPanel pnDatos;
 	private JLabel lblCategoria;
+	private JTextFieldValidator txtPrecio;
+	private JLabel lblPrecio;
 	private JButton jButton1;
 	private JButton btSalir;
 	private JButton btCancelar;
 	private JButton btRegistrar;
 	private JButton btAgregar;
-	private JTable tbIngredientes;
-	private JTextField txtCantidad;
-	private JTextField txtNombre;
+	private JTextFieldValidator txtCantidad;
+	private JTextFieldValidator txtNombre;
 	private JLabel lblCantidad;
 	private JComboBox cmbIngrediente;
 	private JLabel lblIngre;
 	private JLabel lblIngredientes;
 	private JPanel pnIngredientes;
 	private JComboBox cmbCategoria;
-	private JTextField txtCodigo;
+	private JTextFieldValidator txtCodigo;
 	private JLabel lblNombre;
 	private JLabel lblCodigo;
+	private JOptionPane mensaje;
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -92,49 +97,51 @@ public class formRegistProduc extends javax.swing.JFrame {
 						lblCodigo = new JLabel();
 						pnDatos.add(lblCodigo);
 						lblCodigo.setText("Codigo:");
-						lblCodigo.setBounds(26, 55, 65, 18);
+						lblCodigo.setBounds(14, 54, 65, 18);
 						lblCodigo.setFont(new java.awt.Font("Purisa",1,11));
 					}
 					{
 						lblNombre = new JLabel();
 						pnDatos.add(lblNombre);
 						lblNombre.setText("Nombre:");
-						lblNombre.setBounds(26, 91, 65, 14);
+						lblNombre.setBounds(14, 90, 65, 14);
 						lblNombre.setFont(new java.awt.Font("Purisa",1,11));
 					}
 					{
 						lblCategoria = new JLabel();
 						pnDatos.add(lblCategoria);
 						lblCategoria.setText("Categoria:");
-						lblCategoria.setBounds(25, 122, 78, 18);
+						lblCategoria.setBounds(13, 153, 78, 18);
 						lblCategoria.setFont(new java.awt.Font("Purisa",1,11));
 					}
 					{
-						txtCodigo = new JTextField();
+						txtCodigo = new JTextFieldValidator();
 						pnDatos.add(txtCodigo);
-						txtCodigo.setBounds(98, 54, 87, 21);
+						txtCodigo.setBounds(86, 53, 87, 21);
+						txtCodigo.setTipoCaracteresPermitidos(JTextFieldValidator.LETRAS_Y_NUMEROS);
 						txtCodigo.setFont(new java.awt.Font("Purisa",1,11));
 					}
 					{
-						txtNombre = new JTextField();
+						txtNombre = new JTextFieldValidator();
 						pnDatos.add(txtNombre);
-						txtNombre.setBounds(97, 88, 123, 21);
+						txtNombre.setBounds(85, 87, 140, 21);
+						txtNombre.setTipoCaracteresPermitidos(JTextFieldValidator.LETRAS_Y_ESPACIOS);
 						txtNombre.setFont(new java.awt.Font("Purisa",1,11));
 					}
 					{
 						ComboBoxModel cmbCategoriaModel = 
 							new DefaultComboBoxModel(
-									new String[] { "Item One", "Item Two" });
+									new String[] {});
 						cmbCategoria = new JComboBox();
 						pnDatos.add(cmbCategoria);
 						cmbCategoria.setModel(cmbCategoriaModel);
-						cmbCategoria.setBounds(97, 121, 123, 21);
+						cmbCategoria.setBounds(85, 152, 140, 21);
 						cmbCategoria.setFont(new java.awt.Font("Purisa",1,11));
 					}
 					{
 						pnIngredientes = new JPanel();
 						pnDatos.add(pnIngredientes);
-						pnIngredientes.setBounds(237, 13, 266, 251);
+						pnIngredientes.setBounds(231, 13, 272, 251);
 						pnIngredientes.setLayout(null);
 						pnIngredientes.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0,0,0)));
 						pnIngredientes.setBackground(new java.awt.Color(202,255,181));
@@ -155,7 +162,7 @@ public class formRegistProduc extends javax.swing.JFrame {
 						{
 							ComboBoxModel cmbIngredienteModel = 
 								new DefaultComboBoxModel(
-										new String[] { "Item One", "Item Two" });
+										new String[] {});
 							cmbIngrediente = new JComboBox();
 							pnIngredientes.add(cmbIngrediente);
 							cmbIngrediente.setModel(cmbIngredienteModel);
@@ -170,30 +177,35 @@ public class formRegistProduc extends javax.swing.JFrame {
 							lblCantidad.setFont(new java.awt.Font("Purisa",1,11));
 						}
 						{
-							txtCantidad = new JTextField();
+							txtCantidad = new JTextFieldValidator();
 							pnIngredientes.add(txtCantidad);
 							txtCantidad.setBounds(94, 69, 60, 21);
+							txtCantidad.setTipoCaracteresPermitidos(JTextFieldValidator.SOLO_NUMEROS);
 							txtCantidad.setFont(new java.awt.Font("Purisa",1,11));
-						}
-						{
-							TableModel tbIngredientesModel = 
-								new DefaultTableModel(
-										new String[][] { { "Ingrediente", "Cantidad" } },
-										new String[] { "Ingredinte", "Cantidad" });
-							tbIngredientes = new JTable();
-							pnIngredientes.add(tbIngredientes);
-							tbIngredientes.setModel(tbIngredientesModel);
-							tbIngredientes.setBounds(20, 101, 233, 130);
-							tbIngredientes.setFont(new java.awt.Font("Purisa",1,11));
 						}
 						{
 							btAgregar = new JButton();
 							pnIngredientes.add(btAgregar);
-							btAgregar.setBounds(160, 69, 36, 21);
+							btAgregar.setBounds(160, 69, 105, 21);
 							btAgregar.setFont(new java.awt.Font("Purisa",1,11));
 							btAgregar.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/accept.png")));
 							btAgregar.setBackground(new java.awt.Color(255,255,255));
+							btAgregar.setText("Agregar");
 						}
+					}
+					{
+						lblPrecio = new JLabel();
+						pnDatos.add(lblPrecio);
+						lblPrecio.setText("Precio:");
+						lblPrecio.setBounds(13, 121, 43, 15);
+						lblPrecio.setFont(new java.awt.Font("Purisa",0,11));
+					}
+					{
+						txtPrecio = new JTextFieldValidator();
+						pnDatos.add(txtPrecio);
+						txtPrecio.setBounds(85, 118, 88, 22);
+						txtPrecio.setTipoCaracteresPermitidos(JTextFieldValidator.SOLO_NUMEROS);
+						txtPrecio.setFont(new java.awt.Font("Purisa",0,11));
 					}
 				}
 				{
@@ -246,5 +258,50 @@ public class formRegistProduc extends javax.swing.JFrame {
 		this.btRegistrar.addActionListener(actionlistener);
 		this.btSalir.addActionListener(actionlistener);
 	}
+	
+	
+	public JButton getBtCancelar() {
+		return btCancelar;
+	}
 
+	public JButton getBtRegistrar() {
+		return btRegistrar;
+	}
+
+	public JButton getBtAgregar() {
+		return btAgregar;
+	}
+
+	public JTextFieldValidator getTxtCantidad() {
+		return txtCantidad;
+	}
+
+	public JTextFieldValidator getTxtNombre() {
+		return txtNombre;
+	}
+
+	public JTextFieldValidator getTxtCodigo() {
+		return txtCodigo;
+	}
+	
+	public JOptionPane getMensaje() {
+		return mensaje;
+	}
+
+	public JComboBox getCmbIngrediente() {
+		return cmbIngrediente;
+	}
+
+	public JComboBox getCmbCategoria() {
+		return cmbCategoria;
+	}
+
+	public JPanel getPnIngredientes() {
+		return pnIngredientes;
+	}
+
+	public JTextField getTxtPrecio() {
+		return txtPrecio;
+	}
 }
+

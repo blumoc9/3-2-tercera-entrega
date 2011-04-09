@@ -10,8 +10,9 @@ public class Producto extends Datos {
 		super();
 	}
 	
-	public Producto(String nombre, String codigo) {
+	public Producto(String nombre, String codigo, double precio) {
 		super(nombre, codigo);
+		this.precio=precio;
 	}
 
 	public Producto(double precio, Vector<Ingrediente> vectoringrediente) {
