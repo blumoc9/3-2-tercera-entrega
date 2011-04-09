@@ -208,4 +208,5 @@ public class formRegisCliente extends javax.swing.JFrame {
 	}
 	
 	
+	
 }

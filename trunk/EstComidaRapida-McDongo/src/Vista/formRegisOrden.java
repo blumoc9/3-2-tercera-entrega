@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -40,9 +41,9 @@ public class formRegisOrden extends javax.swing.JFrame {
 	private JButton btCancelar;
 	private JButton btSalir;
 	private JFrame jFrame1;
-	private JComboBox cmbCliente;
 	private JButton btBuscar;
 	private JLabel lblCategoria;
+	private JTextField txtNombre;
 	private JButton btRetirar;
 	private JButton btAgregar;
 	private JTable tbPedido;
@@ -56,6 +57,7 @@ public class formRegisOrden extends javax.swing.JFrame {
 	private JLabel lblNumero;
 	private JLabel lblCliente;
 	private JPanel pnDatos;
+	private JOptionPane mensaje;
 
 	/**
 	* Auto-generated main method to display this JFrame
@@ -90,7 +92,7 @@ public class formRegisOrden extends javax.swing.JFrame {
 					btSalir.setText("Salir");
 					btSalir.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/door_out.png")));
 					btSalir.setFont(new java.awt.Font("Purisa",1,11));
-					btSalir.setBounds(523, 337, 103, 28);
+					btSalir.setBounds(548, 343, 103, 28);
 					btSalir.setBackground(new java.awt.Color(255,255,255));
 				}
 				{
@@ -99,7 +101,7 @@ public class formRegisOrden extends javax.swing.JFrame {
 					btCancelar.setText("Cancelar");
 					btCancelar.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/cancel.png")));
 					btCancelar.setFont(new java.awt.Font("Purisa",1,11));
-					btCancelar.setBounds(395, 337, 108, 28);
+					btCancelar.setBounds(435, 343, 108, 28);
 					btCancelar.setBackground(new java.awt.Color(255,255,255));
 				}
 				{
@@ -108,7 +110,7 @@ public class formRegisOrden extends javax.swing.JFrame {
 					btRegistrar.setText("Registrar");
 					btRegistrar.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/add.png")));
 					btRegistrar.setFont(new java.awt.Font("Purisa",1,11));
-					btRegistrar.setBounds(253, 337, 122, 28);
+					btRegistrar.setBounds(308, 343, 122, 28);
 					btRegistrar.setBackground(new java.awt.Color(255,255,255));
 				}
 				{
@@ -116,17 +118,7 @@ public class formRegisOrden extends javax.swing.JFrame {
 					pnRegisOrden.add(pnDatos);
 					pnDatos.setBackground(new java.awt.Color(255,255,255));
 					pnDatos.setLayout(null);
-					pnDatos.setBounds(27, 22, 630, 303);
-					{
-						ComboBoxModel cmbClienteModel = 
-							new DefaultComboBoxModel(
-									new String[] { "Item One", "Item Two" });
-						cmbCliente = new JComboBox();
-						pnDatos.add(cmbCliente);
-						cmbCliente.setModel(cmbClienteModel);
-						cmbCliente.setFont(new java.awt.Font("Purisa",1,11));
-						cmbCliente.setBounds(97, 15, 167, 22);
-					}
+					pnDatos.setBounds(27, 22, 630, 309);
 					{
 						lblCliente = new JLabel();
 						pnDatos.add(lblCliente);
@@ -139,7 +131,9 @@ public class formRegisOrden extends javax.swing.JFrame {
 						pnDatos.add(btBuscar);
 						btBuscar.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/zoom.png")));
 						btBuscar.setBackground(new java.awt.Color(255,255,255));
-						btBuscar.setBounds(276, 15, 25, 21);
+						btBuscar.setBounds(276, 15, 106, 21);
+						btBuscar.setText("Buscar");
+						btBuscar.setFont(new java.awt.Font("Purisa",1,11));
 						btBuscar.addActionListener(null);
 					}
 					{
@@ -161,7 +155,7 @@ public class formRegisOrden extends javax.swing.JFrame {
 							pnPedido.add(lblPedido);
 							lblPedido.setText("Pedido");
 							lblPedido.setFont(new java.awt.Font("Purisa",1,11));
-							lblPedido.setBounds(13, 5, 43, 15);
+							lblPedido.setBounds(242, 9, 43, 15);
 						}
 						{
 							lblCategoria = new JLabel();
@@ -173,7 +167,7 @@ public class formRegisOrden extends javax.swing.JFrame {
 						{
 							ComboBoxModel cmbCategoriaModel = 
 								new DefaultComboBoxModel(
-										new String[] { "Item One", "Item Two" });
+										new String[] { });
 							cmbCategoria = new JComboBox();
 							pnPedido.add(cmbCategoria);
 							cmbCategoria.setModel(cmbCategoriaModel);
@@ -190,7 +184,7 @@ public class formRegisOrden extends javax.swing.JFrame {
 						{
 							ComboBoxModel cmbProductoModel = 
 								new DefaultComboBoxModel(
-										new String[] { "Item One", "Item Two" });
+										new String[] {  });
 							cmbProducto = new JComboBox();
 							pnPedido.add(cmbProducto);
 							cmbProducto.setModel(cmbProductoModel);
@@ -235,6 +229,11 @@ public class formRegisOrden extends javax.swing.JFrame {
 							btRetirar.setBounds(518, 118, 30, 27);
 						}
 					}
+					{
+						txtNombre = new JTextField();
+						pnDatos.add(txtNombre);
+						txtNombre.setBounds(92, 14, 174, 22);
+					}
 				}
 			}
 			pack();
@@ -252,4 +251,41 @@ public class formRegisOrden extends javax.swing.JFrame {
 		this.btRegistrar.addActionListener(actionlistener);
 		this.btSalir.addActionListener(actionlistener);
 	}
+
+	public JButton getBtRegistrar() {
+		return btRegistrar;
+	}
+
+	public JButton getBtCancelar() {
+		return btCancelar;
+	}
+
+	public JButton getBtSalir() {
+		return btSalir;
+	}
+
+	public JButton getBtBuscar() {
+		return btBuscar;
+	}
+
+	public JTextField getTxtNombre() {
+		return txtNombre;
+	}
+
+	public JButton getBtRetirar() {
+		return btRetirar;
+	}
+
+	public JButton getBtAgregar() {
+		return btAgregar;
+	}
+
+	public JTextFieldValidator getTxtCantidad() {
+		return txtCantidad;
+	}
+
+	public JOptionPane getMensaje() {
+		return mensaje;
+	}
+	
 }
