@@ -75,30 +75,34 @@ public class frmHome extends javax.swing.JFrame {
 						mnuArchivo.add(mnuiRegistrarCatego);
 						mnuiRegistrarCatego.setText("Registrar Categoria");
 						mnuiRegistrarCatego.setFont(new java.awt.Font("Purisa",1,11));
+						mnuiRegistrarCatego.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/add.png")));
 					}
 					{
 						mnuiRegisProd = new JMenuItem();
 						mnuArchivo.add(mnuiRegisProd);
 						mnuiRegisProd.setText("Registrar Producto");
 						mnuiRegisProd.setFont(new java.awt.Font("Purisa",1,11));
+						mnuiRegisProd.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/add.png")));
 					}
 					{
 						mnuiRegisCompIngre = new JMenuItem();
 						mnuArchivo.add(mnuiRegisCompIngre);
 						mnuiRegisCompIngre.setText("Registrar Compra de Ingredientes");
 						mnuiRegisCompIngre.setFont(new java.awt.Font("Purisa",1,11));
+						mnuiRegisCompIngre.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/add.png")));
 					}
 					{
 						mnuiRegisOrd = new JMenuItem();
 						mnuArchivo.add(mnuiRegisOrd);
 						mnuiRegisOrd.setText("Registrar Orden");
 						mnuiRegisOrd.setFont(new java.awt.Font("Purisa",1,11));
+						mnuiRegisOrd.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/add.png")));
 					}
 					{
 						mnuiRegisCte = new JMenuItem();
 						mnuArchivo.add(mnuiRegisCte);
 						mnuiRegisCte.setText("Registrar Cliente");
-						mnuiRegisCte.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/user_add.png")));
+						mnuiRegisCte.setIcon(new ImageIcon(getClass().getClassLoader().getResource("iconos/add.png")));
 						mnuiRegisCte.setFont(new java.awt.Font("Purisa",1,11));
 					}
 				}
