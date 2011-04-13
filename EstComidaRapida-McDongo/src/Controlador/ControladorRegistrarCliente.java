@@ -1,0 +1,81 @@
+package Controlador;
+
+import java.awt.HeadlessException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import bean.Conexion;
+
+import Vista.formRegisCliente;
+import Modelo.Cliente;
+
+public class ControladorRegistrarCliente implements ActionListener{
+
+	private formRegisCliente cliente;
+	
+	public ControladorRegistrarCliente() {
+		super();
+		Conexion.establecerPropiedadesConexion("bdconfig", "jdbc.driver", "jdbc.url", "jdbc.nombrebd", "jdbc.usuario", "jdbc.password");
+		this.cliente = new formRegisCliente();
+		this.cliente.setLocationRelativeTo(null);
+		this.cliente.setVisible(true);	
+		this.cliente.AgregarEscuchadores(this);
+	}
+	public ControladorRegistrarCliente(String cedula) {
+		super();
+		Conexion.establecerPropiedadesConexion("bdconfig", "jdbc.driver", "jdbc.url", "jdbc.nombrebd", "jdbc.usuario", "jdbc.password");
+		this.cliente = new formRegisCliente();
+		this.cliente.setLocationRelativeTo(null);
+		this.cliente.setVisible(true);	
+		this.cliente.getTxtCedula().setText(cedula);
+		this.cliente.getTxtCedula().setEnabled(false);
+		this.cliente.AgregarEscuchadores(this);
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		String actionCommand = e.getActionCommand();
+		String tiraSQL;
+		if (actionCommand.equals("Registrar")){
+			Registrar();
+		}else if (actionCommand.equals("Cancelar")){
+			this.LimpiarPantalla();
+		}else if (actionCommand.equals("Salir")){
+			cliente.dispose();
+		}
+	}
+	
+	public void Registrar (){
+		String tiraSQL;
+		if ((cliente.getTxtCedula().getText().equals("")|| cliente.getTxtDireccion().getText().equals("") || cliente.getTxtNombre().getText().equals("") || cliente.getTxtTelefono().getText().equals("")))
+			cliente.getMensaje().showMessageDialog(cliente.getBtRegistrar(), "Debe llenar todos los Campos");
+		else{
+			tiraSQL= "SELECT * FROM cliente where cedula='"+cliente.getTxtCedula().getText()+"' and estatus='A'";
+			ResultSet resultSet = Conexion.consultar(tiraSQL);
+			try {
+				if (!resultSet.next()){
+					tiraSQL ="INSERT INTO cliente (cedula,nombre,direccion,telefono,estatus) " +
+							 "VALUES ('"+this.cliente.getTxtCedula().getText()+"','"+this.cliente.getTxtNombre().getText()+"','"+this.cliente.getTxtDireccion().getText()+"','"+this.cliente.getTxtTelefono().getText()+"','A')";
+					Conexion.ejecutar(tiraSQL);
+					cliente.getMensaje().showMessageDialog(cliente.getBtRegistrar(), "Cliente Registrado Exitosamente");
+					LimpiarPantalla();
+				}else{
+					cliente.getMensaje().showMessageDialog(cliente.getBtRegistrar(), "Cliente ya Registrado");
+					LimpiarPantalla();
+				}
+			} catch (HeadlessException e1) {
+					e1.printStackTrace();
+			} catch (SQLException e1) {
+					e1.printStackTrace();
+			}
+		}
+	}
+	
+	public void LimpiarPantalla(){
+		cliente.getTxtCedula().setText("");
+		cliente.getTxtDireccion().setText("");
+		cliente.getTxtNombre().setText("");
+		cliente.getTxtTelefono().setText("");
+	}
+}
